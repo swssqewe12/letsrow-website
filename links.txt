@@ -1,0 +1,16 @@
+Upcoming Events
+http://www.rowingireland.ie/iframes/event-details.php?mode=upcoming
+
+Old Events
+http://www.rowingireland.ie/iframes/event-details.php?mode=old_events
+
+-----------
+
+Recent and Old Results
+http://www.rowingireland.ie/iframes/event-details.php?mode=recent_and_old
+
+Recent Results
+http://www.rowingireland.ie/iframes/event-details.php?mode=recent
+
+Old Results
+http://www.rowingireland.ie/iframes/event-details.php?mode=old_results
