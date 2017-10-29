@@ -6,6 +6,25 @@ http://www.rowingireland.ie/iframes/event-details.php?mode=old_events
 
 -----------
 
+Event events
+http://www.rowingireland.ie/iframes/event-details.php?regatta_or_hor=hor&id=232&view=events
+
+Event draw
+http://www.rowingireland.ie/iframes/event-details.php?regatta_or_hor=hor&id=232&view=draw
+
+Event results
+http://www.rowingireland.ie/iframes/event-details.php?regatta_or_hor=hor&id=232&view=results
+
+-----------
+
+Event events/draw view
+http://www.rowingireland.ie/iframes/event-details.php?regatta_or_hor=regatta&id=402&view=draw&event_id=14942
+
+Event results view
+http://www.rowingireland.ie/iframes/viewer.php?vmode=rower_team_only&team_id=93092&regatta_or_hor=regatta
+
+-----------
+
 Recent and Old Results
 http://www.rowingireland.ie/iframes/event-details.php?mode=recent_and_old
 
