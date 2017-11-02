@@ -6,7 +6,7 @@ http://www.rowingireland.ie/iframes/event-details.php?mode=old_events
 
 -----------
 
-Event events
+Event entries
 http://www.rowingireland.ie/iframes/event-details.php?regatta_or_hor=hor&id=232&view=events
 
 Event draw
@@ -17,7 +17,7 @@ http://www.rowingireland.ie/iframes/event-details.php?regatta_or_hor=hor&id=232&
 
 -----------
 
-Event events/draw view
+Event entries/draw view
 http://www.rowingireland.ie/iframes/event-details.php?regatta_or_hor=regatta&id=402&view=draw&event_id=14942
 
 Event results view

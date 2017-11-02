@@ -5,9 +5,16 @@ def event(ev):
 	result = {}
 	pieces = ev.findAll('td')
 	info = pieces[0].find("a")
-	id = re.search(r'id=(\d+)', str(info["href"]))
-	if id: id = int(id.group(1))
-	else: id = -1
+	href = str(info["href"])
+	if "iframes" not in href:
+		id = -1
+		roh = ""
+	else:
+		id = re.search(r'id=(\d+)', href)
+		if id: id = int(id.group(1))
+		else: id = -1
+		roh = re.search(r'regatta_or_hor=(\w+)', href).group(1)
+	result["roh"] = roh
 	result["id"] = id
 	result["name"] = info.text
 	result["venue"] = pieces[1].text
@@ -37,8 +44,13 @@ def main(mode="upcoming"):
 
 #upcoming or old_events
 result = {}
+print "Scraping upcoming events..."
 result["upcoming"]	= main("upcoming")
+print "Done."
+print
+print "Scraping past events..."
 result["past"]		= main("old_events")
+print "Done."
 
 f = open("result.json", "w")
 f.write(json.dumps(result))

@@ -1,0 +1,2 @@
+regatta or hor in result [done]
+FIX : EURO AND POUND not working in entries
