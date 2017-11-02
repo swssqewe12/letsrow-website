@@ -1,0 +1,46 @@
+.card {
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	background: white;
+	margin-top: 20px;
+	padding: 12px;
+	border-radius: 2px;
+}
+
+.event-card .event-name {
+	display: inline-block;
+}
+
+.event-card .event-name h1 {
+	font-size: 20px;
+	font-weight: 400;
+}
+
+.event-card .event-name h2 {
+	font-size: 14px;
+	font-weight: 400;
+	padding-top: 5px;
+}
+
+.event-card .event-date {
+	float: right;
+	text-align: right;
+	transform: translateY(3px);
+}
+
+.event-card .event-date h1 {
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.event-card .event-date h2 {
+	padding-top: 4px;
+	font-size: 16px;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.events-year {
+	margin-top: 20px;
+	padding: 5px;
+	border-bottom: 1px solid #ddd;
+}
