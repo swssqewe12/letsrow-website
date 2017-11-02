@@ -11,8 +11,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/events/current', function(req, res) {
-	var year = app.locals.year(data.events.past[0].event_date);
-	res.render('events.html', {'situation': 'current', 'events': data.events.upcoming, 'page': -1, 'yr': year});
+	res.render('events.html', {'situation': 'current', 'events': data.events.upcoming, 'page': -1});
 })
 
 app.get('/events/past/:page', function(req, res) {
