@@ -3,16 +3,31 @@
 <head>
 	<title>Events - Lets Row</title>
 	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/header.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/second-menu.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/event-cards.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/page-selector.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body style="padding-bottom: 80px;">
-
-	<div class="container">
+	<header>
+			<div class="container">
+			<h1> <span style="color: rgb(85, 150, 37);">Lets</span><span style="color: rgb(0, 84, 138);">Row</span>.ie </h1>
+			<ul>
+				<a href="/"><li> Home </li></a>
+				<li class="selected"> Events </li>
+			</ul>
+		</div>
+	</header>
+	<main class="container">
+		<ul class="second-menu">
+			<a href="/events"><li id="current_button"> Current <span>and upcoming </span>events</li></a>
+			<a href="/events/past"><li id="past_button" class="selected"> Past events </li></a>
+			<style> @media screen and (max-width: 380px) {.second-menu li:nth-child(1) span {display: none;}} </style>
+		</ul>
 		<div class="events-year"><%=year%></div>
 		<% for (var event of events) { if (event.event_year == year) { %>
-			<a href="/events#!<%=event.id%>" target="_top"><div class="card event-card">
+			<a href="/event/<%=event.id%>"><div class="card event-card">
 				<div class="event-name">
 					<h1> <%=event.name%> </h1>
 					<h2> <%=event.venue%> </h2>
@@ -23,14 +38,12 @@
 				</div>
 			</div></a>
 		<% } } %>
-	</div>
-
+	</main>
 	<div class="page-selector">
 		<div class="container">
-			<% if (year < newestYear) { %><a href="/iframes/events/past/<%=year+1%>"><div class="left"> < <%= year + 1 %> </div></a><% } %>
-			<% if (year > oldestYear) { %><a href="/iframes/events/past/<%=year-1%>"><div class="right"> <%= year - 1 %> > </div></a><% } %>
+			<% if (year < newestYear) { %><a href="/events/<%=year+1%>"><div class="left"> < <%= year + 1 %> </div></a><% } %>
+			<% if (year > oldestYear) { %><a href="/events/<%=year-1%>"><div class="right"> <%= year - 1 %> > </div></a><% } %>
 		</div>
 	</div>
-
 </body>
 </html>

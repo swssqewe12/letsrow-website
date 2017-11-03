@@ -10,7 +10,23 @@ app.get('/', function (req, res) {
 	res.render('index.html');
 })
 
-app.get('/events', function(req, res) {
+app.get('/events/', function(req, res) {
+	res.render('current_events.html', {'events': data.events.upcoming});
+})
+
+app.get('/events/past', function(req, res) {
+	newestYear = data.events.past[0].event_year;
+	oldestYear = data.events.past[data.events.past.length - 1].event_year;
+	res.render('past_events.html', {'events': data.events.past, 'year': newestYear, 'newestYear': newestYear, 'oldestYear': oldestYear});
+})
+
+app.get('/events/:year', function(req, res) {
+	newestYear = data.events.past[0].event_year;
+	oldestYear = data.events.past[data.events.past.length - 1].event_year;
+	res.render('past_events.html', {'events': data.events.past, 'year': Number(req.params.year), 'newestYear': newestYear, 'oldestYear': oldestYear});
+})
+
+/*app.get('/events', function(req, res) {
 	newestYear = data.events.past[0].event_year;
 	res.render('events.html', {'pastStartYear': newestYear});
 })
@@ -23,7 +39,7 @@ app.get('/iframes/events/past/:year', function(req, res) {
 	newestYear = data.events.past[0].event_year;
 	oldestYear = data.events.past[data.events.past.length - 1].event_year;
 	res.render('past_events.html', {'events': data.events.past, 'year': Number(req.params.year), 'newestYear': newestYear, 'oldestYear': oldestYear});
-})
+})*/
 
 /*app.get('/events/current', function(req, res) {
 	res.render('events.html', {'situation': 'current', 'events': data.events.upcoming, 'page': -1});
