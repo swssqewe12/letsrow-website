@@ -13,8 +13,8 @@
 			<div class="container">
 			<h1> <span style="color: rgb(85, 150, 37);">Lets</span><span style="color: rgb(0, 84, 138);">Row</span>.ie </h1>
 			<ul>
-				<li onclick="window.location='/'"> HOME </li>
-				<li class="selected"> EVENTS </li>
+				<li onclick="window.location='/'"> Home </li>
+				<li class="selected"> Events </li>
 			</ul>
 		</div>
 	</header>
@@ -28,7 +28,7 @@
 			<div class="events-year"><%= yr %></div>
 			<% for (var event of events) { %>
 				<% if (year(event.event_date) == yr) { %>
-					<div class="card event-card">
+					<a href="/event/<%=event.id%>"><div class="card event-card">
 						<div class="event-name">
 							<h1> <%=event.name%> </h1>
 							<h2> <%=event.venue%> </h2>
@@ -37,7 +37,7 @@
 							<h1> <%=dayMonth(event.event_date)%> </h1>
 							<h2> <%=yr%> </h2>
 						</div>
-					</div>
+					</div></a>
 				<% } %>
 			<% } %>
 
@@ -57,7 +57,7 @@
 				<% } %>
 				<% last_yr = yr; %>
 				<% if (year(event.event_date) == yr) { %>
-					<div class="card event-card">
+					<a href="/event/<%=event.id%>"><div class="card event-card">
 						<div class="event-name">
 							<h1> <%=event.name%> </h1>
 							<h2> <%=event.venue%> </h2>
@@ -66,7 +66,7 @@
 							<h1> <%=dayMonth(event.event_date)%> </h1>
 							<h2> <%=yr%> </h2>
 						</div>
-					</div>
+					</div></a>
 				<% } %>
 			<% } %>
 		<% } %>

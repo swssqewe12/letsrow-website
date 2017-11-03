@@ -45,7 +45,7 @@ header li.selected {
 header li.selected::after {
 	content: '';
 	position: absolute;
-	bottom: 10px;
+	bottom: 12px;
 	left: 0px;
 	width: calc(100% - 24px);
 	height: 3px;

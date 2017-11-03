@@ -6,6 +6,10 @@
 	border-radius: 2px;
 }
 
+a .event-card {
+	color: initial;
+}
+
 .event-card .event-name {
 	display: inline-block;
 }
