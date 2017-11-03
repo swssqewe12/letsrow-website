@@ -10,49 +10,11 @@ body {
 	background: #eee;
 }
 
-header {
-	height: 60px;
-	line-height: 60px;
-	box-shadow: 0px 0px 10px #ddd;
-	background: white;
-}
-
-header h1 {
-	float: left;
-	font-weight: 400;
-	font-size: 24px;
-	padding-left: 24px;
-}
-
-header ul {
-	float: right;
-}
-
-header li {
-	position: relative;
-	display: inline-block;
-	padding-right: 24px;
-	font-size: 14px;
-	font-weight: 500;
-	cursor: pointer;
-}
-
-header li.selected {
-	font-weight: 700;
-	color: rgb(0, 84, 138);
-}
-
-header li.selected::after {
-	content: '';
-	position: absolute;
-	bottom: 12px;
-	left: 0px;
-	width: calc(100% - 24px);
-	height: 3px;
-	background: rgb(0, 84, 138);
-}
-
 .container {
 	max-width: 1024px;
 	margin: 0px auto;
+}
+
+a {
+	color: initial;
 }

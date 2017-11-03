@@ -1,6 +1,21 @@
 import urllib2, re, json
 from BeautifulSoup import *
 
+months = {
+		"01": "Jan",
+		"02": "Feb",
+		"03": "Mar",
+		"04": "Apr",
+		"05": "May",
+		"06": "Jun",
+		"07": "Jul",
+		"08": "Aug",
+		"09": "Sep",
+		"10": "Oct",
+		"11": "Nov",
+		"12": "Dec"
+	}
+
 def event(ev):
 	result = {}
 	pieces = ev.findAll('td')
@@ -25,6 +40,10 @@ def event(ev):
 	else: status = -1
 	result["status"] = status
 	result["event_date"] = pieces[3].text
+	split = pieces[3].text.split("/")
+	result["event_year"] = int(split[2])
+	result["event_month"] = months[split[1]]
+	result["event_day"] = split[0]
 	result["closing_date"] = pieces[4].text
 	return result
 

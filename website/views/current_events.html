@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/event-cards.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="padding-bottom: 80px;">
+	<div class="container">
+		<% var prev_year = 0; %>
+		<% for (var event of events) { %>
+			<% year = event.event_year %>
+			<% if (year != prev_year) { %>
+				<div class="events-year"><%= year %></div>
+			<% } %>
+			<% prev_year = year; %>
+			<a href="/events#!<%=event.id%>" target="_top"><div class="card event-card">
+				<div class="event-name">
+					<h1> <%=event.name%> </h1>
+					<h2> <%=event.venue%> </h2>
+				</div>
+				<div class="event-date">
+					<h1> <%=event.event_day%> <%=event.event_month%> </h1>
+					<h2> <%=year%> </h2>
+				</div>
+			</div></a>
+		<% } %>
+	</div>
+</body>
+</html>

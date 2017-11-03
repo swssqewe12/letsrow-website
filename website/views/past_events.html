@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events - Lets Row</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/event-cards.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/page-selector.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="padding-bottom: 80px;">
+
+	<div class="container">
+		<div class="events-year"><%=year%></div>
+		<% for (var event of events) { if (event.event_year == year) { %>
+			<a href="/events#!<%=event.id%>" target="_top"><div class="card event-card">
+				<div class="event-name">
+					<h1> <%=event.name%> </h1>
+					<h2> <%=event.venue%> </h2>
+				</div>
+				<div class="event-date">
+					<h1> <%=event.event_day%> <%=event.event_month%> </h1>
+					<h2> <%=year%> </h2>
+				</div>
+			</div></a>
+		<% } } %>
+	</div>
+
+	<div class="page-selector">
+		<div class="container">
+			<% if (year < newestYear) { %><a href="/iframes/events/past/<%=year+1%>"><div class="left"> < <%= year + 1 %> </div></a><% } %>
+			<% if (year > oldestYear) { %><a href="/iframes/events/past/<%=year-1%>"><div class="right"> <%= year - 1 %> > </div></a><% } %>
+		</div>
+	</div>
+
+</body>
+</html>
