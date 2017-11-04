@@ -18,3 +18,11 @@ body {
 a {
 	color: initial;
 }
+
+h2 {
+	font-weight: 400;
+}
+
+.text p {
+	padding-top: 10px;
+}

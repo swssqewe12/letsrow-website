@@ -26,10 +26,50 @@ app.get('/events/:year', function(req, res) {
 	res.render('past_events.html', {'events': data.events.past, 'year': Number(req.params.year), 'newestYear': newestYear, 'oldestYear': oldestYear});
 })
 
+app.get('/event/:id', function(req, res) {
+	res.render('event.html', {'event': getEventInfo(Number(req.params.id))})
+})
+
+app.get('/event/:id/results', function(req, res) {
+	res.render('event_results.html', {'event': getEventInfo(Number(req.params.id))})
+})
+
 app.listen(process.env.PORT || 8000, function () {
 	console.log('App listening on port 8000!');
 })
 
+function getEventInfo(id)
+{
+	for (var event of data.events.upcoming)
+		if (event.id == id)
+			return event
+
+	for (var event of data.events.past)
+		if (event.id == id)
+			return event
+}
+
+function getEventEvents(id)
+{
+
+}
+
+function getEventResults(id)
+{
+
+}
+
 // EJS helpers
 
 // app.locals.
+
+app.locals.randChoice = function()
+{
+	return arguments[Math.floor(Math.random()*arguments.length)];
+}
+
+app.locals.statuses = {
+	"0": "non",
+	"1": "semi",
+	"2": "full"
+}
