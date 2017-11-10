@@ -30,6 +30,10 @@ app.get('/event/:id', function(req, res) {
 	res.render('event.html', {'event': getEventInfo(Number(req.params.id)), 'eventRaces': getEventRaces(Number(req.params.id))})
 })
 
+app.get('/event/:id/:race_id', function(req, res) {
+	res.render('event_race.html', {'event': getEventInfo(Number(req.params.id)), 'race_id': Number(req.params.race_id)})
+})
+
 app.get('/event/:id/results', function(req, res) {
 	event = getEventInfo(Number(req.params.id))
 	if (app.locals.nowDate() >= app.locals.dateFromStr(event.event_date))

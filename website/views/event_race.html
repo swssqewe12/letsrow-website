@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Events - Lets Row</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/header.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/second-menu.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/table.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/race-table.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<header>
+			<div class="container">
+			<h1> <span style="color: rgb(85, 150, 37);">Lets</span><span style="color: rgb(0, 84, 138);">Row</span>.ie </h1>
+			<ul>
+				<a class="wrap" href="/"><li> Home </li></a>
+				<a class="wrap" href="/events"><li class="selected"> Events </li></a>
+			</ul>
+		</div>
+	</header>
+	<main class="container">
+		<ul class="second-menu">
+			<a href="/event/<%=event.id%>"><li class="selected">Races</li></a>
+			<%if (nowDate() >= dateFromStr(event.event_date)) {%><a href="/event/<%=event.id%>/results"><li>Results</li></a><%}%>
+		</ul>
+		<%= race_id %>
+	</main>
+</body>
+<script src="/static/js/filter-races.js"></script>
+</html>
