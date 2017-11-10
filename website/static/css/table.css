@@ -34,6 +34,10 @@ table tbody td > a {
 	display: block;
 }
 
+table .hidden {
+	display: none;
+}
+
 /*table thead {
 	font-weight: 500;
 	border-top: 1px solid #ddd;

@@ -49,6 +49,39 @@
 			<% } %>
 			<% if (eventRaces.length > 0) { %>
 				<br><br>
+				<div>
+					Filter:
+					<select onchange="filterTable();" id="genderFilter">
+						<option> All genders </option>
+						<option> Mens </option>
+						<option> Womens </option>
+					</select>
+					<select onchange="filterTable();" id="groupFilter">
+						<option> Any group </option>
+						<option> Junior </option>
+						<option> Senior </option>
+						<option> Intermediate </option>
+						<option> Novice </option>
+						<option> Masters </option>
+					</select>
+					<select onchange="filterTable();" id="boatFilter">
+						<option> Any boat type </option>
+						<option> Single Sculls </option>
+						<option> Doubles </option>
+						<option> Pairs </option>
+						<option> Quads </option>
+						<option> Fours </option>
+						<option> Eights </option>
+						<option> Octos </option>
+					</select>
+					<select onchange="filterTable();" id="coxFilter">
+						<option> Cox filter </option>
+						<option> Coxed </option>
+						<option> Coxless </option>
+					</select>
+					<button onclick="clearFilter();" id="clearFilterButton" style="display: none;">X</button>
+				</div>
+				<br><br>
 				<table>
 					<thead>
 						<tr>
@@ -60,7 +93,7 @@
 							<td> Crew Fee </td>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="table">
 						<% for (race of eventRaces) { %>
 							<tr class="clickable">
 								<td><a href="/event/<%=event.id%>/<%=race.id%>" class="wrap"> <%=race.name%> </a></td>
@@ -77,4 +110,5 @@
 		</div>
 	</main>
 </body>
+<script src="/static/js/filter-races.js"></script>
 </html>
