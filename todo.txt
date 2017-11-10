@@ -1,4 +1,4 @@
 regatta or hor in result [done]
-FIX : EURO AND POUND not working in entries
+FIX : EURO AND POUND not working in entries [done]
 FIX : weird html characters in names
 gray out canceled events (add to scraper: check if event cancelled)

@@ -14,6 +14,7 @@ a .event-card {
 
 .event-card .event-name {
 	display: inline-block;
+	width: calc(100% - 58px);
 }
 
 .event-card .event-name h1 {
@@ -28,7 +29,8 @@ a .event-card {
 }
 
 .event-card .event-date {
-	float: right;
+	display: inline-block;
+	width: 51px;
 	text-align: right;
 	transform: translateY(3px);
 }

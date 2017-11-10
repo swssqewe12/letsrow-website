@@ -15,8 +15,9 @@ body {
 	margin: 0px auto;
 }
 
-a {
+a.wrap {
 	color: initial;
+	text-decoration: none;
 }
 
 h2 {
@@ -25,4 +26,26 @@ h2 {
 
 .text p {
 	padding-top: 10px;
+}
+
+.white {
+	background: white;
+	padding: 14px;
+	padding-top: 4px;
+	margin-top: 14px;
+	border-radius: 3px;
+}
+
+.white.high-priority {
+	background-image: url("../img/high-priority.png");
+	background-position: calc(100% - 14px) center;
+	background-repeat: no-repeat;
+}
+
+.padded {
+	padding: 14px;
+}
+
+.white.shadow {
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }

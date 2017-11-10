@@ -14,7 +14,7 @@
 			<div class="container">
 			<h1> <span style="color: rgb(85, 150, 37);">Lets</span><span style="color: rgb(0, 84, 138);">Row</span>.ie </h1>
 			<ul>
-				<a href="/"><li> Home </li></a>
+				<a class="wrap" href="/"><li> Home </li></a>
 				<li class="selected"> Events </li>
 			</ul>
 		</div>
@@ -27,12 +27,11 @@
 		</ul>
 		<div class="events-year"><%=year%></div>
 		<% for (var event of events) { if (event.event_year == year) { %>
-			<a href="/event/<%=event.id%>"><div class="card event-card">
+			<a href="/event/<%=event.id%>" class="wrap"><div class="card event-card">
 				<div class="event-name">
 					<h1> <%=event.name%> </h1>
 					<h2> <%=event.venue%> </h2>
-				</div>
-				<div class="event-date">
+				</div><div class="event-date">
 					<h1> <%=event.event_day%> <%=event.event_month%> </h1>
 					<h2> <%=year%> </h2>
 				</div>

@@ -5,6 +5,8 @@
 	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/header.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/second-menu.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/table.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/race-table.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -12,20 +14,66 @@
 			<div class="container">
 			<h1> <span style="color: rgb(85, 150, 37);">Lets</span><span style="color: rgb(0, 84, 138);">Row</span>.ie </h1>
 			<ul>
-				<a href="/"><li> Home </li></a>
-				<a href="/events"><li class="selected"> Events </li></a>
+				<a class="wrap" href="/"><li> Home </li></a>
+				<a class="wrap" href="/events"><li class="selected"> Events </li></a>
 			</ul>
 		</div>
 	</header>
 	<main class="container">
+		<% if (eventRaces.length > 0) { %>
 		<ul class="second-menu">
 			<li class="selected">Races</li>
-			<a href="/event/<%=event.id%>/results"><li>Results</li></a>
+			<%if (nowDate() >= dateFromStr(event.event_date)) {%><a href="/event/<%=event.id%>/results"><li>Results</li></a><%}%>
 		</ul>
-		<h2> <%=event.name%> </h2>
-		<div class="text">
-			<p> This event is <%=randChoice("scheduled for", "on", "taking place on")%> <%=event.event_month%> <%=event.event_day%> and its status is <%= statuses[event.status] || "unknown" %>. </p>
-			<p> The closing date for entries is <%=event.closing_date%> </p>
+		<% } else { %>
+			<br><br>
+		<% } %>
+		<div class="padded">
+			<h2> <%=event.name%> </h2>
+			<h3> Status: <%= statuses[event.status] || "unknown" %> </h3>
+			<%if (nowDate() < dateFromStr(event.event_date)) { %>
+				<div class="text">
+					<p> This event is <%=randChoice("scheduled for", "on", "taking place on")%> <%=event.event_month%> <%=event.event_day%> <%=randChoice("in", "and is located in", "and is being held in", "and the venue for this event is")%> <%=event.venue%>. </p>
+				</div>
+			<% } else { %>
+				<div class="text">
+					<p> This event <%=randChoice("was on", "took place on")%> <%=event.event_month%> <%=event.event_day%> <%=randChoice("in", "and was located in", "and was being held in", "and the venue for this event was")%> <%=event.venue%>. </p>
+				</div>
+			<% } %>
+			<% if (nowDate() < dateFromStr(event.closing_date)) { %>
+				<br>
+				<a href="http://www.rowingireland.ie/iframes/event-details.php?regatta_or_hor=hor&id=<%=event.id%>&view=events" target="_blank" class="wrap"><div class="white text high-priority shadow">
+					<p> <%=randChoice("Entries are being closed for this event on", "Entries must be in for this event by", "You must have all races entered for this event by", "Entries for this event are closing on", "All races need to be entered before");%> <%=event.closing_date%> </p>
+					<p> <%=randChoice("Entries are done at", "This can be done at", "This must be done at", "Races can be entered at", "Entries can be done at", "Entries must be done at")%> <a href="http://www.rowingireland.ie/">Rowing Ireland</a> </p>
+				</div></a>
+			<% } %>
+			<% if (eventRaces.length > 0) { %>
+				<br><br>
+				<table>
+					<thead>
+						<tr>
+							<td> Race Name </td>
+							<td> Status </td>
+							<td> Win Pts </td>
+							<td> Loss Pts </td>
+							<td> Max Crew Pts </td>
+							<td> Crew Fee </td>
+						</tr>
+					</thead>
+					<tbody>
+						<% for (race of eventRaces) { %>
+							<tr class="clickable">
+								<td><a href="/event/<%=event.id%>/<%=race.id%>" class="wrap"> <%=race.name%> </a></td>
+								<td><a href="/event/<%=event.id%>/<%=race.id%>" class="wrap"> <%=statuses[race.status]%> </a></td>
+								<td><a href="/event/<%=event.id%>/<%=race.id%>" class="wrap"> <%=race.win_pts%> </a></td>
+								<td><a href="/event/<%=event.id%>/<%=race.id%>" class="wrap"> <%=race.loss_pts%> </a></td>
+								<td><a href="/event/<%=event.id%>/<%=race.id%>" class="wrap"> <%=race.max_crew_pts%> </a></td>
+								<td><a href="/event/<%=event.id%>/<%=race.id%>" class="wrap"> <%=race.crew_fee%> </a></td>
+							</tr>
+						<% } %>
+					</tbody>
+				</table>
+			<% } %>
 		</div>
 	</main>
 </body>

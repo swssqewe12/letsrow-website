@@ -2,10 +2,13 @@
 
 from __future__ import division
 
-import urllib2, re, json
+import urllib2, re, json, sys, os
 from BeautifulSoup import *
 
-f = open("result.json", "r")
+reload(sys)
+sys.setdefaultencoding('utf8')
+
+f = open("events.json", "r")
 events = f.read()
 f.close()
 
@@ -20,7 +23,7 @@ def get_int(str):
         return -1
 
 def save_result():
-	rf = open("event_entries.json", "w")
+	rf = open("event_races.json", "w")
 	rf.write(json.dumps(result))
 	rf.close()
 
@@ -41,10 +44,10 @@ def event_result(ev):
 	elif "Full" in status: status = 2
 	else: status = -1
 	result["status"] = status
-	result["max-crew-pts"] = get_int(data[2].text)
-	result["win-pts"] = get_int(data[3].text)
-	result["loss-pts"] = get_int(data[4].text)
-	result["crew-fee"] = data[5].text.replace("&euro;", "")
+	result["max_crew_pts"] = get_int(data[2].text)
+	result["win_pts"] = get_int(data[3].text)
+	result["loss_pts"] = get_int(data[4].text)
+	result["crew_fee"] = data[5].text.replace("&euro;", "€").replace("&pound;", "£")
 	id_ = -1
 	try:
 		a = data[6].find("a")
@@ -58,8 +61,6 @@ def event_result(ev):
 	return result
 
 for mode in ("upcoming", "past"):
-
-	print "Scraping " + mode + " events..."
 
 	result[mode] = {}
 
@@ -83,7 +84,12 @@ for mode in ("upcoming", "past"):
 			result[mode][event["id"]] = events_result(tbody)
 
 		if i % 10 == 0: save_result()
-		print str(event["id"]) + " - " + str(round(i / (len(events[mode]) - 1) * 100, 2)) + "%"
+
+		os.system("cls")
+		print "Scraping " + mode + " events..."
+		print
+		print str(round(i / (len(events[mode]) - 1) * 100, 2)) + "%"
+
 		i+=1
 
 	save_result()

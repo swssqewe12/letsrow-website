@@ -27,11 +27,15 @@ app.get('/events/:year', function(req, res) {
 })
 
 app.get('/event/:id', function(req, res) {
-	res.render('event.html', {'event': getEventInfo(Number(req.params.id))})
+	res.render('event.html', {'event': getEventInfo(Number(req.params.id)), 'eventRaces': getEventRaces(Number(req.params.id))})
 })
 
 app.get('/event/:id/results', function(req, res) {
-	res.render('event_results.html', {'event': getEventInfo(Number(req.params.id))})
+	event = getEventInfo(Number(req.params.id))
+	if (app.locals.nowDate() >= app.locals.dateFromStr(event.event_date))
+		res.render('event_results.html', {'event': event})
+	else
+		res.redirect('/event/' + req.params.id);
 })
 
 app.listen(process.env.PORT || 8000, function () {
@@ -49,9 +53,10 @@ function getEventInfo(id)
 			return event
 }
 
-function getEventEvents(id)
+function getEventRaces(id)
 {
-
+	console.log(data.event_races.upcoming[id] || data.event_races.past[id])
+	return data.event_races.upcoming[id] || data.event_races.past[id];
 }
 
 function getEventResults(id)
@@ -66,6 +71,32 @@ function getEventResults(id)
 app.locals.randChoice = function()
 {
 	return arguments[Math.floor(Math.random()*arguments.length)];
+}
+
+app.locals.today = function()
+{
+	var t = new Date(), dd = t.getDate(), mm = t.getMonth() + 1;
+	var yyyy = t.getFullYear();
+
+	if(dd<10)
+	    dd='0'+dd;
+	if(mm<10)
+	    mm='0'+mm;
+
+	return dd+'/'+mm+'/'+yyyy;
+}
+
+app.locals.dateFromStr = function(str)
+{
+	var pieces = str.split("/");
+	return new Date(pieces[2], pieces[1] - 1, pieces[0]);
+}
+
+app.locals.nowDate = function()
+{
+	var now = new Date();
+	now.setHours(0,0,0,0);
+	return now;
 }
 
 app.locals.statuses = {
